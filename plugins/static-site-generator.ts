@@ -38,7 +38,7 @@ export function staticSiteGenerator() {
               HtmlTemplate({
                 page,
                 html: render(PageComponent()),
-                availablePages: pages,
+                availablePages: pages.filter(page => page !== 'index'),
                 isDevelopment: false,
               }),
             )
