@@ -1,5 +1,5 @@
 import Counter from '../components/Counter/Counter'
-import GridDemo from '../components/GridDemo'
+import GridDemo from '../components/GridDemo/GridDemo'
 
 export default function HomePage() {
   return (
