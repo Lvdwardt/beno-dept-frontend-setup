@@ -1,0 +1,26 @@
+export function Environment() {
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `
+    (function () {
+
+        /**
+        * This file provides the main app with all API endpoints,
+        * and informs it about the current environment it is running on.
+        */
+
+        var environment = 'local';
+        var endpoint = '/api/v1/';
+
+        window.EnvironmentSettings = {};
+        window.EnvironmentSettings.endpoint     = endpoint;
+        window.EnvironmentSettings.environment  = environment;
+
+    })();
+
+`,
+      }}
+    />
+  )
+}

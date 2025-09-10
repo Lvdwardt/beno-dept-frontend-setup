@@ -1,0 +1,7 @@
+[data-on-click='counter::decrement'] {
+  background-color: red;
+}
+
+[data-on-click='counter::increment'] {
+  background-color: green;
+}

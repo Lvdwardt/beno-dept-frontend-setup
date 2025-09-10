@@ -1,0 +1,207 @@
+@import 'tailwindcss';
+
+/*
+  Theme styles
+
+  Most of the styles are from the base Tailwind theme.
+  Adjust or add tokens as needed.
+*/
+@theme {
+  --color-*: initial; /* This disables ALL default colors */
+  --text-*: initial; /* This disables ALL default text */
+
+  /* Tahiti Colors */
+  --color-tahiti-100: #cffafe;
+  --color-tahiti-200: #a5f3fc;
+  --color-tahiti-300: #67e8f9;
+  --color-tahiti-400: #22d3ee;
+  --color-tahiti-500: #06b6d4;
+  --color-tahiti-600: #0891b2;
+  --color-tahiti-700: #0e7490;
+  --color-tahiti-800: #155e75;
+  --color-tahiti-900: #164e63;
+
+  /* Gray & Basic Colors */
+  --color-black: #000;
+  --color-white: #fff;
+
+  --color-gray-100: #f9fafb;
+  --color-gray-200: #f3f4f6;
+  --color-gray-300: #e5e7eb;
+  --color-gray-400: #d1d5db;
+  --color-gray-500: #9ca3af;
+  --color-gray-600: #6b7280;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-gray-950: #0f172a;
+  --color-gray-1000: #0c4a6e;
+
+  /*
+  Typography
+
+  We use original Tailwind class names (e.g., --text-sm, --text-2xl) 
+  to ensure compatibility with tailwind-merge.
+
+  ❗️ Avoid names like --text-body-md — tailwind-merge might misinterpret them and remove them.
+
+  ✅ If you want proper semantic names, use tailwind-variants for that, see <Heading/> and <Text/> components for examples.
+  */
+  /* Body XS */
+  --text-xs: 0.75rem; /* 12px */
+  --text-xs--line-height: var(--leading-normal);
+  --text-xs--font-weight: var(--font-weight-normal);
+  --text-xs--letter-spacing: var(--tracking-normal);
+
+  /* Body SM */
+  --text-sm: 0.875rem; /* 14px */
+  --text-sm--line-height: var(--leading-normal);
+  --text-sm--font-weight: var(--font-weight-normal);
+  --text-sm--letter-spacing: var(--tracking-normal);
+
+  /* Body MD */
+  --text-base: 1rem; /* 16px */
+  --text-base--line-height: --theme(--leading-tight);
+  --text-base--font-weight: var(--font-weight-normal);
+  --text-base--letter-spacing: var(--tracking-normal);
+
+  /* Body LG */
+  --text-lg: 1.125rem; /* 18px */
+  --text-lg--line-height: var(--leading-normal);
+  --text-lg--font-weight: var(--font-weight-normal);
+  --text-lg--letter-spacing: var(--tracking-normal);
+
+  /* Heading XS */
+  --text-xl: 1.25rem; /* 20px */
+  --text-xl--line-height: var(--leading-tight);
+  --text-xl--font-weight: var(--font-weight-bold);
+  --text-xl--letter-spacing: var(--tracking-normal);
+
+  /* Heading SM */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-2xl--line-height: var(--leading-tight);
+  --text-2xl--font-weight: var(--font-weight-bold);
+  --text-2xl--letter-spacing: var(--tracking-normal);
+
+  /* Heading MD */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-3xl--line-height: var(--leading-tight);
+  --text-3xl--font-weight: var(--font-weight-bold);
+  --text-3xl--letter-spacing: var(--tracking-normal);
+
+  /* Heading LG */
+  --text-4xl: 2.25rem; /* 36px */
+  --text-4xl--line-height: var(--leading-tight);
+  --text-4xl--font-weight: var(--font-weight-bold);
+  --text-4xl--letter-spacing: var(--tracking-normal);
+
+  /* Display SM */
+  --text-5xl: 3rem; /* 48px */
+  --text-5xl--line-height: var(--leading-tight);
+  --text-5xl--font-weight: var(--font-weight-bold);
+  --text-5xl--letter-spacing: var(--tracking-tight);
+
+  /* Display MD */
+  --text-6xl: 3.75rem; /* 60px */
+  --text-6xl--line-height: var(--leading-tight);
+  --text-6xl--font-weight: var(--font-weight-bold);
+  --text-6xl--letter-spacing: var(--tracking-tight);
+
+  /* Display LG */
+  --text-7xl: 4.5rem; /* 72px */
+  --text-7xl--line-height: var(--leading-tight);
+  --text-7xl--font-weight: var(--font-weight-bold);
+  --text-7xl--letter-spacing: var(--tracking-tight);
+
+  /* Display XL */
+  --text-8xl: 6rem; /* 96px */
+  --text-8xl--line-height: var(--leading-tight);
+  --text-8xl--font-weight: var(--font-weight-bold);
+  --text-8xl--letter-spacing: var(--tracking-tight);
+
+  /* Display 2XL */
+  --text-9xl: 8rem; /* 128px */
+  --text-9xl--line-height: var(--leading-tight);
+  --text-9xl--font-weight: var(--font-weight-bold);
+  --text-9xl--letter-spacing: var(--tracking-tight);
+}
+
+/*
+  Base Styles
+*/
+@layer base {
+  :root {
+    --main-grid--min-inline-space: 20px;
+    --main-grid--max-width-content-container: --theme(--breakpoint-xl);
+    --main-grid--gap: 60px;
+    --main-grid--columns: 12;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    /* font-family: --theme(--font-family-heading); */
+  }
+}
+
+/*
+  Utility Styles
+*/
+@utility main-grid {
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(var(--main-grid--min-inline-space), 100%)
+    [content-start] clamp(
+      0px,
+      calc(100% - var(--main-grid--min-inline-space) * 2),
+      var(--main-grid--max-width-content-container)
+    )
+    [content-end] minmax(var(--main-grid--min-inline-space), 100%)
+    [full-width-end];
+  row-gap: var(--main-grid--gap);
+}
+
+@utility content-section {
+  grid-column: content-start / content-end;
+  padding-left: var(--main-grid--min-inline-space);
+  padding-right: var(--main-grid--min-inline-space);
+}
+
+@utility content-section-alt {
+  grid-column: content;
+}
+
+@utility full-width-section {
+  grid-column: full-width;
+}
+
+@utility subgrid {
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+@utility content-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--main-grid--columns), 1fr);
+}
+
+/*
+  Custom Variants
+*/
+@custom-variant not-last {
+  &:not(:last-child) {
+    @slot;
+  }
+}
+
+@custom-variant not-first {
+  &:not(:first-child) {
+    @slot;
+  }
+}
+
+/* Automatically added component styles */
+@import '../components/Counter/counter.css';
